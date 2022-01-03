@@ -8,7 +8,6 @@ plugins {
 }
 
 object Versions {
-    const val kotlinCoroutineVersion = "1.3.7"
     const val graphqlSpringBootKickStarterVersion = "12.0.0"
 }
 
@@ -29,14 +28,14 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 
 // Kotlin Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutineVersion}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
 //	GraphQL
     implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${Versions.graphqlSpringBootKickStarterVersion}")
 
 //	Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutineVersion}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.graphql-java-kickstart:graphql-spring-boot-starter-test:${Versions.graphqlSpringBootKickStarterVersion}")

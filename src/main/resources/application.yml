@@ -1,0 +1,9 @@
+server:
+  port: 1234
+
+graphql:
+  graphiql:
+    enabled: true
+  voyager:
+    enabled: true
+

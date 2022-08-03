@@ -1,14 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.2"
+    val kotlinVersion = "1.6.10"
+    val sprintBootVersion = "2.6.7"
+    id("org.springframework.boot") version sprintBootVersion
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.6.10"
-    kotlin("plugin.spring") version "1.6.10"
+    id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
 }
 
 object Versions {
     const val graphqlSpringBootKickStarterVersion = "12.0.0"
+    const val coroutineVersion = "1.6.0"
+    const val riptideVersion = "3.2.2"
 }
 
 group = "com.wwang"
@@ -28,17 +33,17 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 
 // Kotlin Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineVersion}")
 
-//	GraphQL
-    implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${Versions.graphqlSpringBootKickStarterVersion}")
+    // openAPI
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
 
 //	Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineVersion}")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("com.graphql-java-kickstart:graphql-spring-boot-starter-test:${Versions.graphqlSpringBootKickStarterVersion}")
 }
 
 tasks.withType<KotlinCompile> {

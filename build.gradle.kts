@@ -6,6 +6,7 @@ plugins {
     id("org.springframework.boot") version sprintBootVersion
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
+    kotlin("plugin.jpa") version kotlinVersion
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
 }
@@ -32,18 +33,23 @@ dependencies {
 
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 
-// Kotlin Coroutine
+    // Kotlin Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineVersion}")
 
     // openAPI
     implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
     implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
 
-//	Test
+    // database
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("com.h2database:h2")
+
+    //	Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineVersion}")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.hibernate:hibernate-testing:5.2.15.Final")
 }
 
 tasks.withType<KotlinCompile> {

@@ -12,9 +12,7 @@ plugins {
 }
 
 object Versions {
-    const val graphqlSpringBootKickStarterVersion = "12.0.0"
     const val coroutineVersion = "1.6.0"
-    const val riptideVersion = "3.2.2"
 }
 
 group = "com.wwang"
